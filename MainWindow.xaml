@@ -1,0 +1,17 @@
+﻿<Window x:Class="Youtube_sln.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Youtube_sln"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox Name="txt_box" HorizontalAlignment="Left" Margin="299,100,0,0" Text="URL" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Height="29"/>
+        <ComboBox   Name ="combo_box" HorizontalAlignment="Left" Margin="299,217,0,0" VerticalAlignment="Top" Width="227" />
+        <Button Content="Find" HorizontalAlignment="Left" Margin="377,284,0,0" VerticalAlignment="Top" Height="23" Width="71" Click="btn_Click"/>
+        <Button Content="Dowloand" HorizontalAlignment="Left" Margin="370,362,0,0" VerticalAlignment="Top" Height="31" Width="78" Click="btn_dowloand"/>
+
+
+    </Grid>
+</Window>
