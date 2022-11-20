@@ -5,13 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Youtube_sln"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBox Name="txt_box" HorizontalAlignment="Left" Margin="299,100,0,0" Text="URL" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="227" Height="29"/>
-        <ComboBox   Name ="combo_box" HorizontalAlignment="Left" Margin="299,217,0,0" VerticalAlignment="Top" Width="227" />
-        <Button Content="Find" HorizontalAlignment="Left" Margin="377,284,0,0" VerticalAlignment="Top" Height="23" Width="71" Click="btn_Click"/>
-        <Button Content="Dowloand" HorizontalAlignment="Left" Margin="370,362,0,0" VerticalAlignment="Top" Height="31" Width="78" Click="btn_dowloand"/>
-
+        Title="MainWindow" Height="457" Width="839" Foreground="#FF00000F"  AllowsTransparency="True" WindowStyle="None">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <Grid Margin="-5,-21,1,-3" RenderTransformOrigin="0.5,0.5">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFE2CC0B"/>
+                <GradientStop Color="#FF151515" Offset="0.68"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="155*"/>
+            <RowDefinition Height="306*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="206*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="-0.033"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <TextBox Name="txt_box" HorizontalAlignment="Center" Margin="0,51,0,0" Text="URL" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="489"  Height="34" Grid.Column="1" BorderBrush="#FF141413"  SelectionTextBrush="White" Background="{x:Null}" FontSize="16" SelectionBrush="#FFEDC324"/>
+        <ComboBox Name ="combo_box" HorizontalAlignment="Left" Margin="181,57,0,0" VerticalAlignment="Top" Width="483" Grid.Column="1" Grid.Row="1" Height="27" BorderBrush="#FF1A1919" />
+        <Button Content="Find" HorizontalAlignment="Left" Margin="683,52,0,0" VerticalAlignment="Top" Height="35" Width="119" Click="btn_Click" Grid.Column="1" Grid.Row="1" FontSize="16" Background="White" BorderBrush="#FF080707"/>
+        <Button Content="Dowloand" HorizontalAlignment="Left" Margin="417,100,0,0" VerticalAlignment="Top" Height="45" Width="128" Click="btn_dowloand" Grid.Column="1" Grid.Row="1" Background="White" FontSize="16" BorderBrush="#FFD9B612"/>
+        <TextBox HorizontalAlignment="Left" Margin="176,105,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="39" Grid.Column="1" BorderBrush="#FF111212"/>
+        <Button Content="Place Select" HorizontalAlignment="Left" Margin="526,104,0,0" VerticalAlignment="Top" Height="41" Width="139" RenderTransformOrigin="0.754,0.556" Grid.Column="1" FontSize="16" Background="White" BorderBrush="#FF121212" />
+        <Label Content="MP4"  Grid.Column="1" HorizontalAlignment="Left" Margin="188,109,0,0" Grid.Row="1" VerticalAlignment="Top" Background="White" Width="61" FontSize="24" Height="40" Foreground="#FF232321" BorderBrush="#FFD9B612"/>
+        <Label Content="MP3"  Grid.Column="1" HorizontalAlignment="Left" Margin="288,108,0,0" Grid.Row="1" VerticalAlignment="Top" Background="White" Width="61" FontSize="24" Height="42" RenderTransformOrigin="0.484,0.584" BorderBrush="#FFD9B612"/>
 
     </Grid>
 </Window>
