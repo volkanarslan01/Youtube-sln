@@ -50,12 +50,10 @@ namespace Youtube_sln
             string parameters = "-F " + txt_box.Text;
             ProcessStartInfo procInfo = ProcInfoo(fileName, parameters);
 
-
-            //Process proc =  Process.Start(procInfo);
-
             using Process proc = Process.Start(procInfo);
             {
 
+               
                 SelectedUrl = txt_box.Text;
                 combo_box.Items.Clear();
                 proc.WaitForExit();
@@ -75,30 +73,26 @@ namespace Youtube_sln
         }
 
         private void btn_dowloand(object sender, RoutedEventArgs e)
-        {
+        { 
+
             if (combo_box.SelectedItem == null) return;
             string selectedFormat = combo_box.SelectedItem.ToString();
 
             string code = selectedFormat.Split(' ').ToArray()[0].ToString();
 
+            string filedirectory = "-o ~/Movies/%(title)s.%(ext)s";
             string fileName = "youtube-dl.exe";
             string parameters = $"-f {code} {SelectedUrl}";
 
             ProcessStartInfo proc = ProcInfoo(fileName, parameters);
             using (Process procs = Process.Start(proc))
             {
+
                 procs.WaitForExit();
+                list_box.Items.Add(txt_box.Text);
                 MessageBox.Show("Dowloand Okey");
             }
-            
-
-
-
-        }
-
-        private void txt_box_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+           
         }
     }
 }

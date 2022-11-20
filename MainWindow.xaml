@@ -35,11 +35,22 @@
         <TextBox Name="txt_box" HorizontalAlignment="Center" Margin="0,51,0,0" Text="URL" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="489"  Height="34" Grid.Column="1" BorderBrush="#FF141413"  SelectionTextBrush="White" Background="{x:Null}" FontSize="16" SelectionBrush="#FFEDC324"/>
         <ComboBox Name ="combo_box" HorizontalAlignment="Left" Margin="181,57,0,0" VerticalAlignment="Top" Width="483" Grid.Column="1" Grid.Row="1" Height="27" BorderBrush="#FF1A1919" />
         <Button Content="Find" HorizontalAlignment="Left" Margin="683,52,0,0" VerticalAlignment="Top" Height="35" Width="119" Click="btn_Click" Grid.Column="1" Grid.Row="1" FontSize="16" Background="White" BorderBrush="#FF080707"/>
-        <Button Content="Dowloand" HorizontalAlignment="Left" Margin="417,100,0,0" VerticalAlignment="Top" Height="45" Width="128" Click="btn_dowloand" Grid.Column="1" Grid.Row="1" Background="White" FontSize="16" BorderBrush="#FFD9B612"/>
+        <Button Content="Dowloand" HorizontalAlignment="Left" Margin="417,100,0,0" VerticalAlignment="Top" Height="45" Width="128" Click="btn_dowloand" Grid.Column="1" Grid.Row="1" FontSize="16" BorderBrush="#FFD9B612" Background="White"/>
         <TextBox HorizontalAlignment="Left" Margin="176,105,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="39" Grid.Column="1" BorderBrush="#FF111212"/>
         <Button Content="Place Select" HorizontalAlignment="Left" Margin="526,104,0,0" VerticalAlignment="Top" Height="41" Width="139" RenderTransformOrigin="0.754,0.556" Grid.Column="1" FontSize="16" Background="White" BorderBrush="#FF121212" />
         <Label Content="MP4"  Grid.Column="1" HorizontalAlignment="Left" Margin="188,109,0,0" Grid.Row="1" VerticalAlignment="Top" Background="White" Width="61" FontSize="24" Height="40" Foreground="#FF232321" BorderBrush="#FFD9B612"/>
         <Label Content="MP3"  Grid.Column="1" HorizontalAlignment="Left" Margin="288,108,0,0" Grid.Row="1" VerticalAlignment="Top" Background="White" Width="61" FontSize="24" Height="42" RenderTransformOrigin="0.484,0.584" BorderBrush="#FFD9B612"/>
+        <Label Content="Legacy URL" Grid.Column="1" HorizontalAlignment="Left" Margin="364,146,0,0" VerticalAlignment="Top" Height="36" Width="93" FontSize="16" Grid.Row="1" Foreground="#FFF6D81D" RenderTransformOrigin="0.866,0.774"/>
+        <ListBox Name="list_box" Margin="172,182,164,8" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.5,0.5">
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.013"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+        </ListBox>
 
     </Grid>
 </Window>
