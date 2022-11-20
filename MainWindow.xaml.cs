@@ -1,20 +1,16 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
+using System.Net.NetworkInformation;
+using System.Reflection.Emit;
+using System.Threading;
 using System.Threading.Tasks;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 
 namespace Youtube_sln
@@ -48,6 +44,61 @@ namespace Youtube_sln
         {
             string fileName = "youtube-dl.exe";
             string parameters = "-F " + txt_box.Text;
+            string paramaters2 = "--skip-download --get-id --get-title --get-thumbnail --get-duration --get-filename " + txt_box.Text;
+            
+            ProcessStartInfo procInfoForm = ProcInfoo(fileName, paramaters2);
+
+            using Process procs = Process.Start(procInfoForm);
+            {
+                procs.Start();
+                procs.WaitForExit();
+                combo_box.Items.Clear();
+                int sg = 0;
+
+
+                while (!procs.StandardOutput.EndOfStream)
+                {
+                    string result = procs.StandardOutput.ReadLine();
+                    string name = "Name: ";
+
+
+                    if (sg == 0)
+                    {
+                        if (result.Length > 50)
+                        {
+                            name += result.Substring(0, 50);
+                            name += ("\n" + result.Substring(50));
+                        }
+                        else name += result;
+                        lbl_name.Content = name;
+                    }
+                    if (sg == 1)
+                    {
+
+                        lbl_name.Content += "\nId: " + result;
+                    }
+                    if (sg == 2)
+                    {
+                        BitmapImage nbmp = new BitmapImage();
+                        nbmp.BeginInit();
+                        nbmp.UriSource = new Uri(result, UriKind.Absolute);
+                        nbmp.EndInit();
+                        image.Source = nbmp;
+                    }
+                    if (sg == 3)
+                    lbl_name.Content += ("\nFile:" + result);
+                    if (sg++ == 4)
+                    lbl_name.Content += ("\nTime: " + result);
+
+
+
+                }
+            }
+
+
+
+
+
             ProcessStartInfo procInfo = ProcInfoo(fileName, parameters);
 
             using Process proc = Process.Start(procInfo);
@@ -68,7 +119,15 @@ namespace Youtube_sln
 
 
                 }
+
+                // file info form portion 
+
+
+                
+
+
             }
+
 
         }
 
