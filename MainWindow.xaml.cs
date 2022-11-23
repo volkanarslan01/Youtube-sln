@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -20,10 +22,13 @@ namespace Youtube_sln
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string path = Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders", "{374DE290-123F-4565-9164-39C4925E467B}", String.Empty).ToString();
         public MainWindow()
         {
             InitializeComponent();
         }
+        string parameters = "";
+        string fileName = "youtube-dl.exe";
         private string SelectedUrl = "";
         private ProcessStartInfo ProcInfoo (string fileName , string parameters)
         {
@@ -43,7 +48,7 @@ namespace Youtube_sln
         private void btn_Click(object sender, RoutedEventArgs e)
         {
             string fileName = "youtube-dl.exe";
-            string parameters = "-F " + txt_box.Text;
+            parameters = "-F " + txt_box.Text;
             string paramaters2 = "--skip-download --get-id --get-title --get-thumbnail --get-duration --get-filename " + txt_box.Text;
             
             ProcessStartInfo procInfoForm = ProcInfoo(fileName, paramaters2);
@@ -139,9 +144,9 @@ namespace Youtube_sln
 
             string code = selectedFormat.Split(' ').ToArray()[0].ToString();
 
-            string filedirectory = "-o ~/Movies/%(title)s.%(ext)s";
-            string fileName = "youtube-dl.exe";
-            string parameters = $"-f {code} {SelectedUrl}";
+            
+            fileName = "youtube-dl.exe";
+            parameters = $"-o {path}\\%(title)s.%(ext)s -f {code} {SelectedUrl}";
 
             ProcessStartInfo proc = ProcInfoo(fileName, parameters);
             using (Process procs = Process.Start(proc))
@@ -153,5 +158,22 @@ namespace Youtube_sln
             }
            
         }
+
+        private void place_select(object sender, RoutedEventArgs e)
+        {
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = path;
+            dialog.IsFolderPicker = true;
+            if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                path = dialog.FileName;
+                path_textbox.Text = path;
+            }
+
+        }
     }
+
+   
+
 }
